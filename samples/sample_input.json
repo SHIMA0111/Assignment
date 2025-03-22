@@ -1,0 +1,19 @@
+{
+  "inputs": [
+    {
+      "txid": "<txid>",
+      "vout": 0,
+      "amount": "<amount>",
+      "address": "<source address>"
+    }
+  ],
+  "outputs": [
+    {
+      "address": "<distance address>",
+      "amount": "<reship amount>"
+    }
+  ],
+  "changeAddress": "<change distance address (generally, the same as the source address)>",
+  "privateKey": "<private key of the source address>",
+  "feeRate": 1
+}
