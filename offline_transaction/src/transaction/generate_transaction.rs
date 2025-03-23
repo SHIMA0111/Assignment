@@ -81,8 +81,8 @@ impl Platform {
                 let transaction_fee = fee_calculator(
                     &tx_inputs,
                     &tx_outputs,
-                    params.change_address(),
                     params.fee_rate())?;
+                println!("Transaction fee: {}", transaction_fee);
                 let change_amount = total_input_amount - total_output_amount - transaction_fee;
 
                 // Under 546 satoshi, the change will be treated as dust.

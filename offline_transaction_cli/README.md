@@ -22,7 +22,7 @@ This CLI application has 2 argument (except for `-h` and `-V`).
    If you don't specify this argument, the transaction will be displayed 
    on Stdout.
 ```shell
-offline_transaction -i <input_json_path> [-o <output_file>] 
+offline_transaction_cli -i <input_json_path> [-o <output_file>] 
 ```
 
 ## Input file template
