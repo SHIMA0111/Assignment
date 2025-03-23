@@ -1,0 +1,20 @@
+{
+  "network": "invalid_network",
+  "inputs": [
+    {
+      "txid": "<txid>",
+      "vout": 0,
+      "amount": 0.0,
+      "address": "<source address>"
+    }
+  ],
+  "outputs": [
+    {
+      "address": "<distance address>",
+      "amount": 0.0
+    }
+  ],
+  "changeAddress": "<change distance address (generally, the same as the source address)>",
+  "privateKey": "<private key of the source address>",
+  "feeRate": 1
+}

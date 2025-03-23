@@ -4,9 +4,8 @@ use std::path::Path;
 #[test]
 fn test_platform_from_json_success() {
     // Test that a valid JSON file is correctly parsed
-    let json_path = Path::new("../test_data/input.json");
+    let json_path = Path::new("tests/data/sample.json");
     let platform = Platform::from_json(json_path);
-    
     assert!(platform.is_ok(), "Platform::from_json should succeed with a valid JSON file");
     
     // Verify that the platform is a Bitcoin platform

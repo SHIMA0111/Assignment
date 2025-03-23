@@ -66,22 +66,26 @@ impl Platform {
                 reason: e.to_string(),
             })?;
         
-        let network_config: Network = serde_json::from_str(&contents)
+        Self::json_parser(&contents)
+    }
+    
+    fn json_parser(json_str: &str) -> OfflineTransactionResult<Self> {
+        let network_config: Network = serde_json::from_str(json_str)
             .map_err(|_| ParseError {
                 from: "Json".to_string(),
                 to: "Network".to_string(),
                 reason: "input json needs to include 'network' key".to_string()
             })?;
-        
+
         match network_config.network.to_lowercase().trim() {
             "bitcoin" => {
-                let transaction_data: BitcoinTransactionData = serde_json::from_str(&contents)
+                let transaction_data: BitcoinTransactionData = serde_json::from_str(json_str)
                     .map_err(|e| ParseError {
                         from: "Json".to_string(),
                         to: "BitcoinTransactionData".to_string(),
                         reason: e.to_string()
                     })?;
-                
+
                 Ok(Platform::Bitcoin(transaction_data))
             },
             _ => {
@@ -92,5 +96,45 @@ impl Platform {
                 })
             }
         }
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    
+    #[test]
+    fn test_from_json() {
+        let json_path = Path::new("tests/data/sample.json");
+        let result = Platform::from_json(json_path);
+        assert!(result.is_ok());
+    }
+    
+    #[test]
+    fn test_from_json_error() {
+        let json_path = Path::new("tests/data/sample_error.json");
+        let result = Platform::from_json(json_path);
+        assert!(result.is_err());
+    }
+    
+    #[test]
+    fn test_json_parser() {
+        let json_str = r#"{"network": "bitcoin", "inputs": [], "outputs": [], "changeAddress": "", "privateKey": "", "feeRate": 1}"#;
+        let result = Platform::json_parser(json_str);
+        assert!(result.is_ok());
+    }
+    
+    #[test]
+    fn test_json_parser_error() {
+        let json_str = r#"{"network": "ethereum", "inputs": [], "outputs": [], "changeAddress": "", "privateKey": "", "feeRate": 1}"#;
+        let result = Platform::json_parser(json_str);
+        assert!(result.is_err());
+    }
+    
+    #[test]
+    fn test_json_parser_error_2() {
+        let json_str = r#"{"network": "bitcoin", "test": "test"}"#;
+        let result = Platform::json_parser(json_str);
+        assert!(result.is_err());
     }
 }
