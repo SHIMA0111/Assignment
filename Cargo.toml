@@ -1,13 +1,6 @@
-[package]
-name = "assignment_transaction"
-authors = ["oshima.seigo1999@gmail.com"]
-version = "0.1.0"
-edition = "2021"
+[workspace]
+members = [ "first_app","offline_transaction", "offline_transaction_cli"]
+resolver = "2"
 
-[dependencies]
-bitcoin = { version = "0.32", features = ["rand"] }
-clap = { version = "4", features = ["derive"] }
-serde = { version = "1", features = ["derive"] }
-serde_json = "1"
-hex = "0.4"
-anyhow = "1"
+[workspace.package]
+authors = ["Seigo Oshima <oshima.seigo1999@gmail.com>"]

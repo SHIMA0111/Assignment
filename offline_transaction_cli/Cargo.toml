@@ -1,0 +1,8 @@
+[package]
+name = "offline_transaction_cli"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+offline_transaction = { path = "../offline_transaction" }
+anyhow = "1"
