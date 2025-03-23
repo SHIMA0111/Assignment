@@ -54,7 +54,7 @@ impl BitcoinTransactionData {
     /// # Returns
     ///
     /// A new BitcoinTransactionData instance with the specified parameters
-    pub fn new(&self, source_address: &str, private_key: &str) -> Self {
+    pub fn new(source_address: &str, private_key: &str) -> Self {
         Self {
             inputs: Vec::new(),
             outputs: Vec::new(),
