@@ -1,6 +1,6 @@
 use serde::{Deserialize, Serialize};
 
-pub(crate) mod bitcoin;
+pub mod bitcoin;
 
 #[derive(Debug, Deserialize, Serialize)]
 pub(crate) struct Network {

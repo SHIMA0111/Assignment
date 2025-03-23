@@ -1,5 +1,5 @@
 [workspace]
-members = [ "first_app","offline_transaction", "offline_transaction_cli"]
+members = ["offline_transaction", "offline_transaction_cli"]
 resolver = "2"
 
 [workspace.package]
