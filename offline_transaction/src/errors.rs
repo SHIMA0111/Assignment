@@ -40,11 +40,11 @@ pub type OfflineTransactionResult<T> = Result<T, OfflineTransactionError>;
 /// * `HasherError` - An error occurred during hashing operations
 #[derive(Error, Debug)]
 pub enum OfflineTransactionError {
-    #[error("File not found: {path}")]
+    #[error("{path}")]
     FileNotFound {
         path: String,
     },
-    #[error("Invalid file: {path}, expected {expected_type} file")]
+    #[error("{path}, expected {expected_type} file")]
     InvalidFile {
         path: String,
         expected_type: String,
@@ -66,6 +66,6 @@ pub enum OfflineTransactionError {
         input: String,
         expected: String,
     },
-    #[error("Hasher error: {0}")]
+    #[error("{0}")]
     HasherError(String),
 }

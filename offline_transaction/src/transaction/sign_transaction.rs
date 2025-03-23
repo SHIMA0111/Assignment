@@ -22,11 +22,12 @@ impl TransactionData {
     ///
     /// # Returns
     ///
-    /// * `OfflineTransactionResult<()>` - Ok(()) if signing succeeds, or an error if:
+    /// * `OfflineTransactionResult<&mut Self>` - Ok(&mut TransactionData) if signing succeeds, 
+    /// or an error if:
     ///   - Private key format is invalid
     ///   - Signature generation fails
     ///   - Input script type is unsupported
-    pub fn sign_transaction(&mut self) -> OfflineTransactionResult<()> {
+    pub fn sign_transaction(&mut self) -> OfflineTransactionResult<&mut Self> {
         let secp = Secp256k1::new();
         
         match self {
@@ -103,6 +104,6 @@ impl TransactionData {
         }
         
         self.signed();
-        Ok(())
+        Ok(self)
     }
 }

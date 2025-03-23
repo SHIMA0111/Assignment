@@ -35,6 +35,18 @@ impl TransactionData {
         }
     }
 
+    /// Returns whether the transaction is signed
+    ///
+    /// This method checks the internal signed flag and returns its value
+    ///
+    /// # Returns
+    ///
+    /// * `bool` - True if the transaction is signed, false otherwise
+    pub fn is_signed(&self) -> bool {
+        match self {
+            TransactionData::BitcoinTransaction { signed, .. } => *signed,
+        }
+    }
 
     /// Returns the raw transaction as a hexadecimal string
     ///
