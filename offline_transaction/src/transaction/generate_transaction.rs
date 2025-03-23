@@ -13,11 +13,11 @@ use crate::utils::str_to_address::str_to_address_unchecked;
 impl Platform {
     /// Generates an unsigned transaction based on the platform parameters
     ///
-    /// For example, in Bitcoin, this method creates a new unsigned transaction with the following steps:
-    /// 1. Converts input transactions to Bitcoin transaction inputs (TxIn)
-    /// 2. Converts output specifications to Bitcoin transaction outputs (TxOut)
+    /// Creates a new unsigned transaction with the following general steps:
+    /// 1. Converts input transactions to appropriate transaction inputs
+    /// 2. Converts output specifications to transaction outputs
     /// 3. Calculates the transaction fee based on the fee rate
-    /// 4. Adds a change output if the remaining amount is greater than the dust threshold (546 satoshis)
+    /// 4. Adds a change output if the remaining amount is greater than the minimum threshold
     ///
     /// # Returns
     ///
