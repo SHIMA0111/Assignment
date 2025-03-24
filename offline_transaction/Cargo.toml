@@ -2,7 +2,8 @@
 name = "offline_transaction"
 authors = { workspace = true }
 version = "0.1.0"
-edition = "2024"
+edition = "2021"
+
 [dependencies]
 bitcoin = { version = "0.32", features = ["rand"] }
 serde = { version = "1", features = ["derive"] }

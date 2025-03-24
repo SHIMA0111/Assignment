@@ -4,7 +4,6 @@ use std::fs::File;
 use std::io::Write;
 use std::path::PathBuf;
 use std::process::exit;
-use anyhow::Result;
 use clap::Parser;
 use offline_transaction::errors::OfflineTransactionError;
 use offline_transaction::Platform;
@@ -20,7 +19,7 @@ pub struct Cli {
     output: Option<PathBuf>,
 }
 
-fn main() -> Result<()> {
+fn main() {
     let cli_args = Cli::parse();
     
     let input_json_path = cli_args.input;
@@ -66,6 +65,4 @@ fn main() -> Result<()> {
     } else {
         println!("{}", raw_transaction);
     }
-    
-    Ok(())
 }

@@ -3,10 +3,9 @@ name = "offline_transaction_cli"
 version = "0.1.0"
 authors = { workspace = true }
 description = "CLI tool to generate transaction for blockchain"
-edition = "2024"
+edition = "2021"
 
 [dependencies]
 offline_transaction = { path = "../offline_transaction" }
 clap = {version = "4", features = ["derive"]}
 colored = "3"
-anyhow = "1"
